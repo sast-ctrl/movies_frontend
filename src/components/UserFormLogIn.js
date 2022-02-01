@@ -68,7 +68,7 @@ const UserFormLogIn = () => {
             </div>
             
             <div className='form-group'>
-              <label htmlFor='inputPassword'>Username</label>
+              <label htmlFor='inputPassword'>Password</label>
               <input onChange={passwordChanged} type={'password'} className='form-control' id='inputPassword' placeholder='password' required />
               <div className='invalid-feedback'> Invalid Credetentials </div>
             </div>

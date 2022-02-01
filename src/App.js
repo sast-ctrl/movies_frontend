@@ -5,6 +5,7 @@ import './App.css';
 import Home from './pages/Home.js'
 import Details from './pages/Details.js'
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 
 export const API_URL = "https://movies-backend-ns.herokuapp.com/api";
@@ -56,6 +57,7 @@ const App = () => {
             <Route path="/movies/:slug" element={<Details />} />
 
             <Route path="/log-in" element={<Login />} />
+            <Route path="/sign-up" element={<Signup />} />
           </Routes>
         </div>
 
