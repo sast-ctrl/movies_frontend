@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 const MovieCard = ({ title, releaseDate, genre, plot, avgRating, slug, withLink = false }) => {
   return <div>
@@ -15,7 +16,7 @@ const MovieCard = ({ title, releaseDate, genre, plot, avgRating, slug, withLink 
           <ReactStars count={5} size={24} isHalf={true} edit={false} value={avgRating} activeColor='#ffd700' />
           <span className='ml-2'>{avgRating.toFixed(1)}</span>
         </div>
-        <h6 className="card-subtitle mt-1 mb-3 text-muted">Release date: {releaseDate}</h6>
+        <h6 className='card-subtitle mt-1 mb-3 text-muted'>{dayjs(releaseDate).format('MMM DD, YYYY')}</h6>
 
         <p className='card-text'>{plot.substring(0, 100).concat('...')}</p>
 

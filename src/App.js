@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import Home from './pages/Home.js'
+import Details from './pages/Details.js'
 import { Link } from "react-router-dom";
 
 export const API_URL = "https://movies-backend-ns.herokuapp.com/api";
