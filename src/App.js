@@ -10,13 +10,18 @@ import Signup from "./pages/Signup";
 
 export const API_URL = "https://movies-backend-ns.herokuapp.com/api";
 const App = () => {
+
   // jwt token
-  const[isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
-    if ( localStorage.getItem('jwt-token')) setIsAuth(true);
+    if (localStorage.getItem('jwt-token')) setIsAuth(true);
   }, []);
-  
+
+  const logOut = () => {
+    localStorage.removeItem('jwt-token');
+    window.location.href = '/';
+  };
 
   return (
     <>
@@ -36,15 +41,25 @@ const App = () => {
               <Link to="/" className="nav-link">Home</Link>
             </li>
           </ul>
+          {!isAuth && (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link to="/log-in" className="nav-link">Log in</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/sign-up" className="nav-link">Sign up</Link>
+              </li>
+            </ul>
+          )}
 
-          <ul className="navbar-nav">
-            <li className="nav-item">
-            <Link to="/log-in" className="nav-link">Log in</Link>
-            </li>
-            <li className="nav-item">
-            <Link to="/sign-up" className="nav-link">Sign up</Link>
-            </li>
-          </ul>
+          {isAuth && (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link onClick={logOut} to="" className="nav-link">Log out</Link>
+              </li>
+            </ul>
+          )}
+
         </div>
 
       </nav>
