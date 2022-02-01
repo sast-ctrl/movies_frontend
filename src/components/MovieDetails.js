@@ -21,12 +21,6 @@ const MovieDetails = ({ slug }) => {
 
     const getMovies = async () => {
         try {
-            // const config = {
-            //     headers: {
-            //         'Content-type': 'application/json',
-            //         Authorization: `Bearer ${localStorage.getItem('jwt-token')}`
-            //     }
-            // }
             const result = await axios.get(`${API_URL}/movies/${slug}`);
             setMovie(result.data);
         } catch (error) {
@@ -40,7 +34,7 @@ const MovieDetails = ({ slug }) => {
                     <>
                         <MovieInfo movie={movie} />
 
-                        {isAuth && <RatingMovie />}
+                        {isAuth && <RatingMovie movie={movie} getMovie={getMovies} />}
                         {/* For testing purposes only */}
                         {/* {!isAuth && <RatingMovie />} */}
 
