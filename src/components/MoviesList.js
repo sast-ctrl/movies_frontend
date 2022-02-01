@@ -9,24 +9,29 @@ const MoviesList = () => {
   useEffect(() => {
     getMovies();
   }, []);
-  
+
   const getMovies = async () => {
     try {
       const result = await axios.get(`${API_URL}/movies`);
       setMovies(result.data);
-    } catch(error) {
+    } catch (error) {
       alert(`Error getting movies: ${error}`);
     }
   };
 
-  return <div>
-    {movies && movies.length > 0 &&
-      movies.map((movie) => {
-        return <MovieCard key={movie.id} title={movie.title} releaseDate={movie.release_date} genre={movie.genre} />
-      })
-
-    }
-  </div>;
+  return (
+    <div className='row justify-content-center'>
+      {movies &&
+        movies.length > 0 &&
+        movies.map((movie) => {
+          return (
+            <div className='col-12 col md-6 col-lg-4 mb-4' key={movie.id}>
+              <MovieCard title={movie.title} releaseDate={movie.release_date} genre={movie.genre} plot={movie.plot} avgRating={movie.avg_rating} slug={movie.slug} withLink />
+            </div>
+          );
+        })}
+    </div>
+  );
 };
 
 export default MoviesList;
