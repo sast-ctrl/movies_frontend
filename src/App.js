@@ -1,9 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './App.css';
+
 import Home from './pages/Home.js'
 import Details from './pages/Details.js'
-import { Link } from "react-router-dom";
+import Login from "./pages/Login";
+
 
 export const API_URL = "https://movies-backend-ns.herokuapp.com/api";
 const App = () => {
@@ -52,6 +54,8 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/movies/:slug" element={<Details />} />
+
+            <Route path="/log-in" element={<Login />} />
           </Routes>
         </div>
 
