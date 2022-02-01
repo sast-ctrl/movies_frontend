@@ -40,9 +40,9 @@ const MovieDetails = ({ slug }) => {
                     <>
                         <MovieInfo movie={movie} />
 
-                        {isAuth && <p>Logged</p>}
+                        {isAuth && <RatingMovie />}
                         {/* For testing purposes only */}
-                        {!isAuth && <RatingMovie />}
+                        {/* {!isAuth && <RatingMovie />} */}
 
                         <div className='row'>
                             <div className='col-12'>
