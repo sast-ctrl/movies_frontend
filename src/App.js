@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 import './App.css';
 import Home from './pages/Home.js'
 import Details from './pages/Details.js'
@@ -6,6 +7,14 @@ import { Link } from "react-router-dom";
 
 export const API_URL = "https://movies-backend-ns.herokuapp.com/api";
 const App = () => {
+  // jwt token
+  const[isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    if ( localStorage.getItem('jwt-token')) setIsAuth(true);
+  }, []);
+  
+
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
