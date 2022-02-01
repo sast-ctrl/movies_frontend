@@ -14,7 +14,7 @@ const MovieReview = ({ rating }) => {
                     <ReactStars count={5} size={24} isHalf={true} edit={false} value={rating.rating.toFixed(1)} activeColor='#ffd700' />
                     <span className='ml-2'>{rating.rating.toFixed(1)}</span>
                 </div>
-                <p className="lead my-4">{rating.comment}</p>
+                <p className="mt-3 mb-1">{rating.comment}</p>
             </div>
         </div>
     );

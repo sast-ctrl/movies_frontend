@@ -3,9 +3,11 @@ import axios from 'axios';
 import { API_URL } from '../App';
 import MovieReview from './MovieReview';
 import MovieInfo from './MovieInfo';
+import RatingMovie from './RatingMovie';
 
 // Temporary
 import ReactStars from 'react-rating-stars-component';
+
 
 
 const MovieDetails = ({ slug }) => {
@@ -19,12 +21,12 @@ const MovieDetails = ({ slug }) => {
 
     const getMovies = async () => {
         try {
-            const config = {
-                headers: {
-                    'Content-type': 'application/json',
-                    Authorization: `Bearer ${localStorage.getItem('jwt-token')}`
-                }
-            }
+            // const config = {
+            //     headers: {
+            //         'Content-type': 'application/json',
+            //         Authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+            //     }
+            // }
             const result = await axios.get(`${API_URL}/movies/${slug}`);
             setMovie(result.data);
         } catch (error) {
@@ -33,48 +35,36 @@ const MovieDetails = ({ slug }) => {
     };
 
     return (
-        <div className='row justify-content-center'>
-            {movie &&
-                (
+        <>
+                {movie && (
                     <>
-                        {/* movie info */}
-                        <MovieInfo movie={movie}/>
+                        <MovieInfo movie={movie} />
+
                         {isAuth && <p>Logged</p>}
                         {/* For testing purposes only */}
-                        {!isAuth && (
-                            <>
-                                <div className='row'>
-                                    <div className='col-12 mb-4'>
-                                        <h3>Add a review</h3>
-                                        <form>
-                                            <div className='form-group d-flex justify-content-end'>
-                                                <ReactStars onChange={''} count={5} size={30} isHalf={false} edit={true} activeColor='#ffd700' />
-                                            </div>
+                        {!isAuth && <RatingMovie />}
 
-                                            <div className='form-group'>
-                                                <textarea onChange={''} className='form-control' rows={'8'} required />
-                                            </div>
-
-                                            <button type='submit' className='btn btn-primary'>
-                                                Save
-                                            </button>
-                                        </form>
+                        <div className='row'>
+                            <div className='col-12'>
+                                {movie.ratings && movie.ratings.length > 0 ? (
+                                    <>
+                                        <h2>Reviews</h2>
+                                        {movie.ratings.map((rating) => {
+                                            return <MovieReview key={rating.id} rating={rating} />;
+                                        })}
+                                    </>
+                                ) : (
+                                    <div className='alert alert-warning' role={'alert'} style={{ width: '100%' }}>
+                                        There are no reviews
                                     </div>
-                                </div>
-                            </>
-                        )}
+                                )}
+                            </div>
+                        </div>
 
-
-                        <h2>Reviews</h2>
-
-                        {movie.ratings && movie.ratings.length > 0 &&
-                            movie.ratings.map((rating) => {
-                                return <MovieReview key={rating.id} rating={rating} />
-                            })}
                     </>
                 )
-            }
-        </div>
+                }
+        </>
     );
 };
 
