@@ -20,7 +20,7 @@ const MoviesList = () => {
   };
 
   return (
-    <div className='row justify-content-center'>
+    <div className='row justify-content-start'>
       {movies &&
         movies.length > 0 &&
         movies.map((movie) => {

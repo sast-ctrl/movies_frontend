@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 const MovieCard = ({ title, releaseDate, genre, plot, avgRating, slug, withLink = false }) => {
   return <div>
-    <div className="card">
+    <div className="card mb-4">
       <div className="card-body">
         <h5 className='card-title mb-3'>
           {title} <span className='badge badge-success ml-2'>{genre}</span>
