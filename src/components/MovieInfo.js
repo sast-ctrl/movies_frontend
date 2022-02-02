@@ -6,7 +6,7 @@ const MovieInfo = ({ movie }) => {
     return (
         <div className='row'>
             <div className='col-12'>
-                <div className='jumbotron jumbotron-fluid' style={{ width: '100%' }}>
+                <div className='jumbotron jumbotron-fluid info-jumbotron' style={{ width: '100%' }}>
                     <div className='container'>
                         <div className='d-flex flex-column flex-md-row align-items-md-center'>
                             <h1 className='display-4'> {movie.title} </h1>
@@ -15,7 +15,7 @@ const MovieInfo = ({ movie }) => {
                             </h3>
                         </div>
 
-                        <h6 className='card-subtitle mb-3 text-muted'>
+                        <h6 className='card-subtitle my-3'>
                             {dayjs(movie.release_date).format('MMM DD, YYYY')}
                         </h6>
 

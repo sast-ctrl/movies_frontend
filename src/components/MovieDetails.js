@@ -43,6 +43,7 @@ const MovieDetails = ({ slug }) => {
                                 {movie.ratings && movie.ratings.length > 0 ? (
                                     <>
                                         <h2>Reviews</h2>
+
                                         {movie.ratings.map((rating) => {
                                             return <MovieReview key={rating.id} rating={rating} />;
                                         })}
