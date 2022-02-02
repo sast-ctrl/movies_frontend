@@ -1,16 +1,15 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import MovieDetails from '../components/MovieDetails';
+import React from "react";
+import { useParams } from "react-router-dom";
+import MovieDetails from "../components/MovieDetails";
 
 const Details = () => {
+  const { slug } = useParams();
 
-    const { slug } = useParams();
-
-    return (
-        <>
-            <main>{slug && <MovieDetails slug={slug} />}</main>
-        </>
-    );
+  return (
+    <>
+      <main>{slug && <MovieDetails slug={slug} />}</main>
+    </>
+  );
 };
 
 export default Details;
