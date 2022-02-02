@@ -17,13 +17,13 @@
 }
 
 .jumbotron.review-jumbotron h5 {
-   font-size: 25px;
-  }
+  font-size: 25px;
+}
 
-  .jumbotron.review-jumbotron h6 {
-    font-style: italic;
-    opacity: 0.8;
-   }
+.jumbotron.review-jumbotron h6 {
+  font-style: italic;
+  opacity: 0.8;
+}
 
 .jumbotron.review-jumbotron::after {
   content: "";
@@ -107,5 +107,5 @@
 
   .jumbotron.review-jumbotron {
     padding: 50px 100px;
-}
+  }
 }
